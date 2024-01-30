@@ -5,9 +5,9 @@ public class Lab1 {
 	 // 1. 
     public static Map<String, Integer> UtgaOnoolt() {
         Map<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("Irmuun", 1);
-        hashMap.put("Eku", 2);
-        hashMap.put("Tugu", 3);
+        hashMap.put("7js", 17);
+        hashMap.put("uthg", 22);
+        hashMap.put("dfss", 33);
         return hashMap;
     }
 
@@ -34,7 +34,7 @@ public class Lab1 {
 
     // 6. 
     public static void Hevleh(Map<String, Integer> hashMap) {
-        System.out.println("===========\n Elements:");
+        System.out.println("===========\n Утгууд:");
         for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -52,16 +52,16 @@ public class Lab1 {
         //7:18
 
         // Tugugiin keyg haruulna
-        System.out.println("Tugu key: " + getElementByKey(Map1, "Tugu"));
+        System.out.println("Tugu түлхүүр: " + getElementByKey(Map1, "Tugu"));
 
         // Irmuunii keyg 1 ees 15 ruu uurchilnu
-        updateElementByKey(Map1, "Irmuun", 15);
+        updateElementByKey(Map1, "7js", 15);
 
         // Eku utgatai keyg mapnaas ustgana
-        removeElementByKey(Map1, "Eku");
+        removeElementByKey(Map1, "7js");
 
         // Eku gesen key bga esehiig shalgana
-        System.out.println("Eku baigaa yu: " + containsKey(Map1, "Eku"));
+        System.out.println("EKu утгатай түлхүүр байгаа эсэх: " + containsKey(Map1, "uthg"));
 
         // Uurchlultuu hevlene
         Hevleh(Map1);
