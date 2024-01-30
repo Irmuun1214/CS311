@@ -29,6 +29,7 @@ public class Lab1 {
     // 5. 
     public static boolean containsKey(Map<String, Integer> hashMap, String key) {
         return hashMap.containsKey(key);
+        
     }
 
     // 6. 
@@ -48,6 +49,7 @@ public class Lab1 {
         Map<String, Integer> Map1 = UtgaOnoolt();
         
         Hevleh(Map1);
+        //7:16
 
         // Tugugiin keyg haruulna
         System.out.println("Tugu key: " + getElementByKey(Map1, "Tugu"));
