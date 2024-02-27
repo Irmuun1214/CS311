@@ -5,9 +5,6 @@ public class Lab1 {
 	 // 1. 
     public static Map<String, Integer> UtgaOnoolt() {
         Map<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("7js", 17);
-        hashMap.put("uthg", 22);
-        hashMap.put("dfss", 33);
         return hashMap;
     }
 

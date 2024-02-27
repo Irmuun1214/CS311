@@ -1,33 +1,155 @@
-import java.util.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.HashMap;
+// 7:50
+public class Lab2<K, V> implements Lab2Interface<K, V> {
+    private Map<K, V> hashMap;
+    private JTextArea outputTextArea;
 
-public class Lab2 {
-
-    public static <K, V> Map<K, V> UtgaOnoolt() {
-        Map<K, V> hashMap = new HashMap<>();
-//        hashMap.put((K) "7js", (V) Integer.valueOf(17));
-//        hashMap.put((K) "uthg", (V) Integer.valueOf(22));
-//        hashMap.put((K) "dfss", (V) Integer.valueOf(33));
-        return hashMap;
+    public Lab2() {
+        hashMap = new HashMap<>();
+        initializeUI();
     }
 
-    public static <K, V> V getElementByKey(Map<K, V> hashMap, K key) {
+    private void initializeUI() {
+        JFrame frame = new JFrame("Lab2");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(450, 300);
+        frame.setLocationRelativeTo(null);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        outputTextArea = new JTextArea();
+        JScrollPane scrollPane = new JScrollPane(outputTextArea);
+        mainPanel.add(scrollPane);
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+
+        JButton addButton = new JButton("Мап утга нэмэх");
+        JButton searchButton = new JButton("Түлхүүрээр утга хайх");
+        JButton updateButton = new JButton("Түлхүүрээр утгыг солих");
+        JButton removeButton = new JButton("Түлхүүрээр утгыг устгах");
+        JButton containsButton = new JButton("Түлхүүрэнд утга байгаа эсэх");
+        JButton displayButton = new JButton("Мапыг хэвлэх");
+
+        inputPanel.add(addButton);
+        inputPanel.add(searchButton);
+        inputPanel.add(updateButton);
+        inputPanel.add(removeButton);
+        inputPanel.add(containsButton);
+        inputPanel.add(displayButton);
+
+        mainPanel.add(inputPanel);
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                K key = (K) JOptionPane.showInputDialog("Түлхүүр:");
+                V value = (V) JOptionPane.showInputDialog("Утга:");
+
+                if (key != null && value != null) {
+                    updateElementByKey(hashMap, key, value);
+                    updateTextArea();
+                }
+            }
+        });
+
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                K searchKey = (K) JOptionPane.showInputDialog("Түлхүүр:");
+                V foundValue = getElementByKey(hashMap, searchKey);
+                outputTextArea.append(searchKey + " түлхүүрийн утга нь: " + foundValue + "\n");
+            }
+        });
+
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                K updateKey = (K) JOptionPane.showInputDialog("Түлхүүр:");
+                V updateValue = (V) JOptionPane.showInputDialog("Утга:");
+                updateElementByKey(hashMap, updateKey, updateValue);
+                updateTextArea();
+            }
+        });
+
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                K removeKey = (K) JOptionPane.showInputDialog("Түлхүүр:");
+                removeElementByKey(hashMap, removeKey);
+                updateTextArea();
+            }
+        });
+
+        containsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                K checkKey = (K) JOptionPane.showInputDialog("Түлхүүр:");
+                boolean contains = containsKey(hashMap, checkKey);
+                outputTextArea.append("Түлхүүр: " + checkKey + "\n Утгатай эсэх: " + contains + "\n");
+                if (contains) {
+                    V foundValue = getElementByKey(hashMap, checkKey);
+                    outputTextArea.append("Утга: " + foundValue + "\n");
+                } else {
+                    outputTextArea.append("\n");
+                }
+            }
+        });
+
+        displayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                outputTextArea.append("Мап:\n");
+                Hevleh(hashMap);
+            }
+        });
+
+        frame.getContentPane().add(mainPanel);
+        frame.setVisible(true);
+    }
+
+    @Override
+    public Map<K, V> Uusgeh() {
+        return new HashMap<>();
+    }
+
+    @Override
+    public V getElementByKey(Map<K, V> hashMap, K key) {
         return hashMap.get(key);
     }
 
-    public static <K, V> void updateElementByKey(Map<K, V> hashMap, K key, V newValue) {
+    @Override
+    public void updateElementByKey(Map<K, V> hashMap, K key, V newValue) {
         hashMap.put(key, newValue);
     }
 
-    public static <K, V> void removeElementByKey(Map<K, V> hashMap, K key) {
+    @Override
+    public void removeElementByKey(Map<K, V> hashMap, K key) {
         hashMap.remove(key);
     }
 
-    public static <K, V> boolean containsKey(Map<K, V> hashMap, K key) {
+    @Override
+    public boolean containsKey(Map<K, V> hashMap, K key) {
         return hashMap.containsKey(key);
     }
 
-    public static <K, V> void Hevleh(Map<K, V> hashMap) {
-        System.out.println("===========\n Утгууд:");
+    @Override
+    public void Hevleh(Map<K, V> hashMap) {
+        outputTextArea.append("\n Утгууд:\n");
+        for (Map.Entry<K, V> entry : hashMap.entrySet()) {
+            outputTextArea.append(entry.getKey() + ": " + entry.getValue() + "\n");
+        }
+        outputTextArea.append("\n");
+    }
+
+
+    private void updateTextArea() {
+        System.out.println("\n Утгууд:");
         for (Map.Entry<K, V> entry : hashMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -35,70 +157,8 @@ public class Lab2 {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Map hashmapiig uusgej utga ugnu
-        Map<String, Integer> map = UtgaOnoolt();
-
-        int choice;
-        do {
-            System.out.println("1. Мап-д нэмэх.");
-            System.out.println("2. Mапаас key-ээр утгыг хайх.");
-            System.out.println("3. Утгыг key-ээр шинэчлэх.");
-            System.out.println("4. Утгыг key-ээр устгах.");
-            System.out.println("5. Key утгатай эсэх.");
-            System.out.println("6. Mапыг хэвлэх");
-            System.out.println("0. Гарах\n");
-            System.out.println("Сонголтоо оруулна уу:");
-            choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-
-            switch (choice) {
-                case 1:
-                    System.out.println("Мап-д нэмэх:");
-//                  hashMap.put((K) "7js", (V) Integer.valueOf(17));
-                    System.out.print("key: ");
-                    String key = scanner.nextLine();
-                    System.out.print("Утга: ");
-                    int value = scanner.nextInt();
-                    map.put(key, value);
-                    break;
-                case 2:
-                    System.out.print("Хайх key: ");
-                    String searchKey = scanner.nextLine();
-                    Integer foundValue = getElementByKey(map, searchKey);
-                    System.out.println(searchKey + "key утга: " + foundValue);
-                    break;
-                case 3:
-                    System.out.print("Шинэчлэх Key: ");
-                    String updateKey = scanner.nextLine();
-                    System.out.print("Утга: ");
-                    int updateValue = scanner.nextInt();
-                    updateElementByKey(map, updateKey, updateValue);
-                    break;
-                case 4:
-                    System.out.print("Устгах key: ");
-                    String removeKey = scanner.nextLine();
-                    removeElementByKey(map, removeKey);
-                    break;
-                case 5:
-                    System.out.print("Шалгах Key оруулна уу: ");
-                    String checkKey = scanner.nextLine();
-                    boolean contains = containsKey(map, checkKey);
-                    System.out.println("key нь утгатай эсэх: " + contains);
-                    break;
-                case 6:
-                    System.out.println("Мап нь:");
-                    Hevleh(map);
-                    break;
-                case 0:
-                    System.out.println("Гарав.");
-                    break;
-                default:
-                    System.out.println("Буруу тоо сонгосон байна.");
-            }
-        } while (choice != 0);
-
-        scanner.close();
+        SwingUtilities.invokeLater(() -> {
+            new Lab2<String, Integer>();
+        });
     }
 }
