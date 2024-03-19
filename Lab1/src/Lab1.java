@@ -3,6 +3,8 @@ import java.util.*;
 public class Lab1 {
 
 	 // 1. 
+	// 1. 
+	
     public static Map<String, Integer> UtgaOnoolt() {
         Map<String, Integer> hashMap = new HashMap<>();
         return hashMap;
