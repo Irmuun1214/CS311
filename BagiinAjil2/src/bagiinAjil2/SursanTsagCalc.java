@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class SursanTsagCalc {
-
+//
     // Constants for session durations
     private static final int BagaSurguuli_1Tsag_Case1 = 45; // minutes
     private static final int DundSurguuli_1Tsag_Case1 = 45; // minutes
