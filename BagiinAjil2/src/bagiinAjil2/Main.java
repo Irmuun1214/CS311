@@ -99,16 +99,16 @@ public class Main {
         System.out.println("============================");
         for (int i = 0; i < 16; i++) {
             if(i<12){
-            System.out.println("Angi " + (i+1) + " \nweek: " +buten_doloo_honog[i]+ " \nСурсан өдөр:"+ hicheelleh_honog[i]);
+            System.out.println("Анги " + (i+1) + " \nДолоо хоног: " +buten_doloo_honog[i]+ " \nСурсан өдөр:"+ hicheelleh_honog[i]);
             }else{
-                System.out.println("Kurs " + (i-11) + " \nweek: " +buten_doloo_honog[i]+ " \nall day:"+ hicheelleh_honog[i]);
+                System.out.println("Курс " + (i-11) + " \nДолоо хоног: " +buten_doloo_honog[i]+ " \nНийт өдөр:"+ hicheelleh_honog[i]);
             }
             System.out.println("============================");
         }
         long niit_honog=0;
         long niit_hugatsaa;
         long sonirholtoi_tsag=0;
-        System.out.println("Dund Surguuli tsag");
+        System.out.println("Дунд сургуулийн цаг");
         for(int i = 0; i<5; i++){
             niit_honog =niit_honog + hicheelleh_honog[i];
             sonirholtoi_tsag =sonirholtoi_tsag + buten_doloo_honog[i]*2;
@@ -129,23 +129,23 @@ public class Main {
 
 
 
-        System.out.println("Ih Surguuli tsag");
+        System.out.println("Их сургуулийн цаг");
         for(int i = 12; i<16; i++){
             niit_honog =niit_honog + hicheelleh_honog[i];
         }
         niit_hugatsaa = niit_honog*270;
         System.out.println(niit_hugatsaa/60);
-        System.out.println("Sonirholtoi tsag tsag");
+        System.out.println("Сонирхолтой цаг");
         System.out.println(sonirholtoi_tsag/60);
-        System.out.println("niit honog: "+niit_honog);
-        System.out.println("ezleh huvi: "+(double)40/niit_honog);
+        System.out.println("Нийт хоног: "+niit_honog);
+        System.out.println("Эзлэх хувь: "+(double)40/niit_honog);
 
         // niit_honog=0;
         // niit_hugatsaa=0;
 
-        // System.out.println("Dund Surguuli tsag");
+        // System.out.println("Дунд сургуулийн цаг");
         // for(int i = 0; i<5; i++){
-        //     System.err.println(i+1 + "angid: " + buten_doloo_honog[i]*2 + " tsag");
+        //     System.err.println(i+1 + "Ангид: " + buten_doloo_honog[i]*2 + " цаг");
         // }
 
         // for(int i = 5; i<12; i++){
