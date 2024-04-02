@@ -1,43 +1,37 @@
 package bagiinAjil2;
+
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class SursanTsagCalc {
-//
-    // Constants for session durations
-    private static final int BagaSurguuli_1Tsag_Case1 = 45; // minutes
-    private static final int DundSurguuli_1Tsag_Case1 = 45; // minutes
-    private static final int Dund2Surguuli_1Tsag_Case1 = 45; // minutes
-    
-    private static final int DundSurguuli_1Tsag_Case2 = 30; // minutes
-    private static final int Dund2Surguuli_1Tsag_Case2 = 35; // minutes
-    
-    private static final int DeedSurguuli_1Tsag = 90; // minutes
+    static void calculateAndPrint() {
+        // Initialize start and end dates for each academic term
+        LocalDate[] case2_ehleh_hugatsaa = new LocalDate[16];
+        LocalDate[] case2_duusah_hugatsaa = new LocalDate[16];
 
-    // Constants for school system durations
-    private static final int[] SurguuliinHicheelOrohTsag_Case1 = {3, 5, 2, 5}; // Junior High, Middle School, High School, University
-    private static final int[] SurguuliinHicheelOrohTsag_Case2 = {0, 5, 7, 4}; // Junior High, Middle School, High School, University
+        for (int i = 0; i < 16; i++) {
+            case2_ehleh_hugatsaa[i] = LocalDate.of(Values.EHLEH_ON + i, 9, 1);
+            case2_duusah_hugatsaa[i] = LocalDate.of(Values.DUUSAH_ON + i, 6, 1);
+        }
 
-    // Constants for days and sessions per week
-    private static final int DoloonHonogtAjillahTsag_Case1 = 6;
-    private static final int DoloonHonogtAjillahTsag_Case2 = 5;
+        // Calculate and store the duration of each academic term
+        // This part can be moved into separate functions if needed
 
-    private static final int BagaSurguuliOrohTsag_Case1 = 4;
-    private static final int DundSurguuliOrohTsagWeekly_Case1 = 4;
-    private static final int Dund2SurguuliOrohTsag_Case1 = 6;
+        // Calculate and store the number of days and weekdays for each academic term
+        // This part can be moved into separate functions if needed
 
-    private static final int DundSurguuliOrohTsag_Case2 = 4;
-    private static final int Dund2SurguuliOrohTsag_Case2 = 6;
+        // Calculate and store the total hours studied for each academic term
+        // This part can be moved into separate functions if needed
 
-    private static final int DeedSurguuliOrohTsag = 3;
+        // Output the calculated values
+        for (int i = 0; i < 16; i++) {
+            if (i < 12) {
+                System.out.println("Анги " + (i + 1) + " \nДолоо хоног: " + Values.BUTEN_DOLOO_HONOG[i] + " \nСурсан өдөр:" + Values.HICHEELLEH_HONOG[i]);
+            } else {
+                System.out.println("Курс " + (i - 11) + " \nДолоо хоног: " + Values.BUTEN_DOLOO_HONOG[i] + " \nНийт өдөр:" + Values.HICHEELLEH_HONOG[i]);
+            }
+            System.out.println("============================");
+        }
 
-    public static void main(String[] args) {
-        // Dates for the two scenarios
-        LocalDate startDate_Case1 = LocalDate.of(1978, 9, 1);
-        LocalDate endDate_Case1 = LocalDate.of(1993, 9, 1);
-        LocalDate startDate_Case2 = LocalDate.of(2006, 9, 1);
-        LocalDate endDate_Case2 = LocalDate.of(2022, 9, 1);
-        
-        
+        // Calculate and print total hours studied, etc.
     }
 }
