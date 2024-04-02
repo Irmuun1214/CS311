@@ -96,12 +96,14 @@ public class Main {
 
            butarhai_honog =0;
         }
+        System.out.println("============================");
         for (int i = 0; i < 16; i++) {
             if(i<12){
-            System.out.println("Angi " + (i+1) + " week: " +buten_doloo_honog[i]+ " all day:"+ hicheelleh_honog[i]);
+            System.out.println("Angi " + (i+1) + " \nweek: " +buten_doloo_honog[i]+ " \nСурсан өдөр:"+ hicheelleh_honog[i]);
             }else{
-                System.out.println("Kurs " + (i-11) + " week: " +buten_doloo_honog[i]+ " all day:"+ hicheelleh_honog[i]);
+                System.out.println("Kurs " + (i-11) + " \nweek: " +buten_doloo_honog[i]+ " \nall day:"+ hicheelleh_honog[i]);
             }
+            System.out.println("============================");
         }
         long niit_honog=0;
         long niit_hugatsaa;
