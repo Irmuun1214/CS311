@@ -133,7 +133,7 @@ public class Main {
         System.out.println("Сонирхолтой цаг");
         System.out.println(sonirholtoi_tsag/60);
         System.out.println("Нийт хоног: "+niit_honog);
-        System.out.println("Эзлэх хувь: "+(double)40/niit_honog);
+        System.out.println("Эзлэх хувь: "+(double)160/niit_honog);
 
         // niit_honog=0;
         // niit_hugatsaa=0;

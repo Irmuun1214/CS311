@@ -146,25 +146,7 @@ public class Main2 {
         System.out.println("Сонирхолтой цаг");
         System.out.println(sonirholtoi_tsag/60);
         System.out.println("Нийт хоног: "+niit_honog);
-        System.out.println("Эзлэх хувь: "+(double)40/niit_honog);
-
-        // niit_honog=0;
-        // niit_hugatsaa=0;
-
-        // System.out.println("Дунд сургуулийн цаг");
-        // for(int i = 0; i<5; i++){
-        //     System.err.println(i+1 + "Ангид: " + buten_doloo_honog[i]*2 + " цаг");
-        // }
-
-        // for(int i = 5; i<12; i++){
-        //     niit_honog =niit_honog + hicheelleh_honog[i];
-        // }
-        // niit_hugatsaa = niit_hugatsaa + niit_honog*210;
-        // System.out.println(niit_hugatsaa/60);
-
-        // niit_honog=0;
-        // niit_hugatsaa=0;
-
+        System.out.println("Эзлэх хувь: "+(double)200/niit_honog);
 
 
     }
