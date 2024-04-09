@@ -42,7 +42,12 @@ public class Main {
         System.out.println("Их сургуулийн хичээлд зарцуулсан хугацаа: " + case2.ih_sur_suraltsah_tsag()+" tsag");
         System.out.println("Их сургуулийн дадлагын эзлэх хувь: " + case2.ih_dadlagiin_ezleh_huvi()+" %");
         System.out.println("===================================================================================");
-        
+        float s=0;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Дунд сургуулийн " + i + " ангийн бүтэн 7 хоног: " + case1.get_jiliin_7_honog(i));
+            s=s+case1.get_jiliin_7_honog(i);
+        }
+        System.out.println("7 хоногийн нийлбэрэээ,"+s);
         
     }
 }

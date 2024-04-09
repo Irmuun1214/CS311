@@ -29,6 +29,7 @@ public class Data {
 	}
 	int[] angilal = new int[4];
 	float[][] angilal_data = new float[4][7];
+	float[][] jiliin_7_honog = new float [16][2];
 	public void set_angilal_data() {
 		for(int i = 0; i<angilal_too; i++) {
 			System.out.println(i+1 + "-р ангилал");
@@ -54,10 +55,12 @@ public class Data {
 		float angilal_niit_buten_doloo_honog=0;
 		float angilal_niit_hicheellesen_honog=0;
 		int jiliin_niit_honog;
-		float jiliin_buten_doloo_honog=0;
+		int jiliin_buten_doloo_honog=0;
 		float jiliin_niit_hicheellesen_honog=0;
 		double hicheellesen_hugatsaa;
 		int check=0;
+		int count = 0;
+		
 		this.dund_sur_ehleh_on = ehleh_on;
 		int duusah_on = ehleh_on+1;
 		for(int i = 0; i < angilal_too; i++) {
@@ -113,6 +116,11 @@ public class Data {
 				System.out.println("Ангилал тус бүрийн нийт долоон хоног: "+angilal_niit_buten_doloo_honog);
 				System.out.println("Ангилал тус бүрийн нийт хичээллэсэн хоног: "+angilal_niit_hicheellesen_honog);
 				
+				
+				jiliin_7_honog[count][0] = jiliin_buten_doloo_honog;
+				jiliin_7_honog[count][1] = jiliin_niit_hicheellesen_honog;
+				
+				count++;
 				
 			}
 			angilal_data[i][3] = angilal_niit_buten_doloo_honog;
@@ -190,5 +198,8 @@ public class Data {
 		return ih_dadlagiin_ezleh_huvi;
 	}
 	
-	
+	public float get_jiliin_7_honog(int angi) {
+		float t = jiliin_7_honog[angi-1][0];
+		return t;
+	}
 }
