@@ -1,6 +1,6 @@
 package ganana;
 // 2024-04-08 10:31
-// 4:49
+// gnangnan
 public class Main {
     public static void main(String[] args) {
         Data case1 = new Data();
