@@ -1,0 +1,173 @@
+CLASS Employee 
+BEGIN
+    private  emp_id;
+    private  surname;
+    private  name;
+    private  rd;
+    private  age;
+    private  gender;
+    private  location;
+
+
+    CONSTRUCTOR Employee( emp_id, surname, name, rd, age,  gender,  location) 
+    BEGIN
+        emp_id = emp_id;
+        name = name;
+        age = age;
+        gender = gender;
+        location = location;
+    END
+
+
+    METHOD getId() 
+      BEGIN RETURN emp_id END
+
+    METHOD getSurname() 
+      BEGIN RETURN surname END
+
+    METHOD getName() 
+      BEGIN RETURN  name END
+    
+    METHOD getRd() 
+      BEGIN RETURN  rd END
+
+    METHOD getAge() 
+      BEGIN RETURN age END
+
+    METHOD getGender() 
+      BEGIN RETURN  gender END
+
+    METHOD getLocation() 
+      BEGIN RETURN  location END
+
+    METHOD toString() 
+      BEGIN RETURN  "Id: " + emp_id +"Name: " + name + ", Age: " + age + ", Location: " + location END
+END CLASS
+
+
+CLASS Server 
+BEGIN
+    static List<Employee> ulaanbaatarServerEmployees ;
+    static List<Employee> darkhanServerEmployeesc
+
+
+    CONSTRUCTOR Server() 
+    BEGIN
+        ulaanbaatarServerEmployees.add(new Employee("k001", "John", 35, 'M', "Ulaanbaatar"));
+        ulaanbaatarServerEmployees.add(new Employee("k002", "Alice", 28, 'F', "Ulaanbaatar"));
+        ulaanbaatarServerEmployees.add(new Employee("C001", "Bob", 42, 'M', "Ulaanbaatar"));
+    END
+
+
+    METHOD ulaanbaatarServerEmployees() 
+      BEGIN RETURN ulaanbaatarServerEmployees END
+
+    METHOD darkhanServerEmployeesc() 
+      BEGIN RETURN darkhanServerEmployeesc END
+
+    METHOD transferServerToDarkhan(employees) 
+    BEGIN
+      List<Employee> toRemove;
+      for emp to employees do
+        if ulaanbaatarServerEmployees.contains(emp) then
+           toRemove.add(emp)
+        endif
+      done
+
+      for emp to toRemove do
+        ulaanbaatarServerEmployees.remove(emp);
+        darkhanServerEmployees.add(emp);
+        print(emp.toString + "Дарханлуу шилжүүлсэн")
+        print()
+      done
+    END
+    
+    METHOD transferBackupToUlaanbaatar(employees) 
+    BEGIN
+      List<Employee> toRemove;
+      for emp to employees do
+        if darkhanServerEmployees.contains(emp) then
+           toRemove.add(emp)
+        endif
+      done
+
+      for emp to toRemove do
+        darkhanServerEmployees.remove(emp);
+        ulaanbaatarServerEmployees.add(emp);
+        print(emp.toString + "Улаанбаатарлуу шилжүүлсэн")
+        print()
+      done
+    END
+
+END CLASS
+
+CLASS Option1
+BEGIN
+main()
+ // declaration
+ Server controller
+ List employees= controller.ulaanbaatarServerEmployees()
+ List selectedEmployees
+
+ print(Улаабаатар сервер:)
+ printEmloyees(employees)
+
+ for emp to employees do
+    if emp.getAge() >= 35 and emp.getGender() == 'M' then
+       selectedEmployees.add(emp);
+    endif
+ done
+
+ controller.transferServerToBackup(selectedEmployees);
+ System.out.println("UB");
+ printEmployees(controller.mainServerEmployees());
+ System.out.println("Darkhan");
+ printEmployees(controller.backupServerEmployees());
+
+METHOD printEmployees(employees) 
+BEGIN
+  List<Employee> toRemove;
+  for emp to employees do
+   System.out.println(emp); 
+  done
+  System.out.println();
+END
+
+CLASS Option2
+BEGIN
+main()
+ // declaration
+ Server controller
+ List employees= controller.ulaanbaatarServerEmployees()
+ List selectedEmployees
+
+ print(Улаабаатар сервер:)
+ printEmloyees(employees)
+
+ System.out.println("Шилжүүлэr:");
+ controller.transferServerToDarkhan(employees);
+
+ List<Employee> employees2 = controller.darkhanServerEmployees();
+
+ for emp to employees2 do
+    if emp.getAge() < 35 and emp.getGender() == 'F' then
+       selectedEmployees.add(emp);
+    endif
+ done
+
+
+     System.out.println("Шилжүүлэr:");
+     controller.transferBackupToUlaanbaatar(selectedEmployees);
+     System.out.println("Улаабаатар сервер::");
+     printEmployees(controller.ulaanbaatarServerEmployees());
+     System.out.println("Дархан сервер:");
+     printEmployees(controller.darkhanServerEmployees());
+
+METHOD printEmployees(employees) 
+BEGIN
+  List<Employee> toRemove;
+  for emp to employees do
+   System.out.println(emp); 
+  done
+  System.out.println();
+END
