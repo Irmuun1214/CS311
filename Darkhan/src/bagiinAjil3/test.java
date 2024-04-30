@@ -14,7 +14,7 @@ public class test {
             }
         }
         System.out.println("Шилжүүлэr:");
-        controller.transferServerToDarkhan(selectedEmployees);
+        controller.transferUlaanbaatarToDarkhan(selectedEmployees);
         System.out.println();
         System.out.println("Улаабаатар сервер:");
         printEmployees(controller.ulaanbaatarServerEmployees());

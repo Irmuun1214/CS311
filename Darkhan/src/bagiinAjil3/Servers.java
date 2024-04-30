@@ -21,7 +21,7 @@ class Servers {
         return darkhanServerEmployees;
     }
 
-    public void transferServerToDarkhan(List<Employee> employees) {
+    public void transferUlaanbaatarToDarkhan(List<Employee> employees) {
         List<Employee> toRemove = new ArrayList<>();
         for (Employee emp : employees) {
             if (ulaanbaatarServerEmployees.contains(emp)) {
@@ -36,7 +36,7 @@ class Servers {
         }
     }
 
-    public void transferBackupToUlaanbaatar(List<Employee> employees) {
+    public void transferDarkhanToUlaanbaatar(List<Employee> employees) {
         List<Employee> toRemove = new ArrayList<>();
         for (Employee emp : employees) {
             if (darkhanServerEmployees.contains(emp)) {

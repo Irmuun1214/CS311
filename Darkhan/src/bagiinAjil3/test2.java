@@ -11,7 +11,7 @@ public class test2 {
         printEmployees(controller.ulaanbaatarServerEmployees());
         System.out.println("Шилжүүлэr:");
     
-        controller.transferServerToDarkhan(employees);
+        controller.transferUlaanbaatarToDarkhan(employees);
         List<Employee> employees2 = controller.darkhanServerEmployees();
         
         System.out.println("Үлдсэн: ");
@@ -25,7 +25,7 @@ public class test2 {
     
     
         System.out.println("Шилжүүлэr:");
-        controller.transferBackupToUlaanbaatar(selectedEmployees);
+        controller.transferDarkhanToUlaanbaatar(selectedEmployees);
         System.out.println("Улаабаатар сервер::");
         printEmployees(controller.ulaanbaatarServerEmployees());
         System.out.println("Дархан сервер:");
