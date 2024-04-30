@@ -1,25 +1,25 @@
 Хувилбар 1.
-DECLARE ажилчинloyee Ажилтан төрөлтэй лист зарлах
-SET ажилчинloyee = УБ сервер дах ажилчдын оноох
-DECLARE selectedажилчинloyee Ажилтан төрөлтэй лист зарлах
+DECLARE Employee Ажилтан төрөлтэй лист зарлах
+SET Employee = УБ сервер дах ажилчдын оноох
+DECLARE selectedEmployee Ажилтан төрөлтэй лист зарлах
 
 
-FOR ажилчинloyee-н ажилчин бүрийн хувьд DO
+FOR Employee-н ажилчин бүрийн хувьд DO
   IF нас >=35 and хүйс == эрэгтэй THEN
-      selectedажилчинloyee нэмэх
+      selectedEmployee нэмэх
   ENDIF
 DONE
 
-FUNCTION transferUlaanbaatarToDarkhan(selectedажилчинloyees)
-   DECLARE toRemove Ажилтан төрөлтэй лист
-   FOR selectedажилчинloyees-н ажилчин бүрийн хувьд DO
+FUNCTION transferUlaanbaatarToDarkhan(selectedEmployees)
+   DECLARE toRemove<Ажилтан>
+   FOR selectedEmployees-н ажилчин бүрийн хувьд DO
        IF Улаанбаатар сервер (ажилчин) байвал THEN
-       	toRemove листэд нэмэх
+       	toRemove<Ажилтан>.ADD (ажилчин)
        ENDIF
    DONE
 
    FOR toRemove-н ажилчин бүрийн хувьд DO
-      Улаанбаатар сервер дэх ажилчдаас ажилчин устгах ;
+      Улаанбаатар сервер дэх ажилчдаас ажилчин DELETE ;
       Дархан сервер дэх ажилчдад ажилчин-ийг нэмэх ;
    DONE
 END funcion
@@ -28,13 +28,13 @@ END funcion
 
 
 Хувилбар 2.
-DECLARE ажилчинloyee Ажилтан төрөлтэй лист 
-SET ажилчинloyee = УБ сервер дах ажилчдын оноох
-DECLARE selectedажилчинloyee Ажилтан төрөлтэй лист 
+DECLARE Employee Ажилтан төрөлтэй лист 
+SET Employee = УБ сервер дах ажилчдын оноох
+DECLARE selectedEmployee Ажилтан төрөлтэй лист 
 
-FUNCTION transferUlaanbaatarToDarkhan(ажилчинloyee)
-   DECLARE toRemove Ажилтан төрөлтэй лист 
-   FOR selectedажилчинloyees-н ажилчин бүрийн хувьд DO
+FUNCTION transferUlaanbaatarToDarkhan(Employee)
+   DECLARE toRemove<Ажилтан>
+   FOR selectedEmployees-н ажилчин бүрийн хувьд DO
        IF Улаанбаатар серверт (ажилчин) байвал THEN
        	toRemove листэд нэмэх
        ENDIF
@@ -46,21 +46,21 @@ FUNCTION transferUlaanbaatarToDarkhan(ажилчинloyee)
    DONE
 END funcion
 
-DECLARE ажилчинloyee2 Ажилтан төрөлтэй лист 
-SET ажилчинloyee = Дархан сервер дах ажилчдын оноох
+DECLARE Employee2 Ажилтан төрөлтэй лист 
+SET Employee = Дархан сервер дах ажилчдын оноох
 
-FOR ажилчинloyee2-н ажилчин бүрийн хувьд DO
+FOR Employee2-н ажилчин бүрийн хувьд DO
   IF нас >=35 and хүйс == эрэгтэй THEN
      ажилчин хэвлэх
   ELSE 
-     selectedажилчинloyee нэмэх
+     selectedEmployee нэмэх
   ENDIF
       
 DONE
 
-FUNCTION transferDarkhanToUlaanbaatar(selectedажилчинloyees)
+FUNCTION transferDarkhanToUlaanbaatar(selectedEmployees)
    DECLARE toRemove Ажилтан төрөлтэй лист
-   FOR selectedажилчинloyees-н ажилчин бүрийн хувьд DO
+   FOR selectedEmployees-н ажилчин бүрийн хувьд DO
        IF Дархан серверт (ажилчин) байвал THEN
        	toRemove листэд нэмэх
        ENDIF
@@ -71,3 +71,6 @@ FUNCTION transferDarkhanToUlaanbaatar(selectedажилчинloyees)
       Улаанбаатар сервер дэх ажилчдад ажилчин-ийг нэмэх ;
    DONE
 END funcion
+
+
+7:25
